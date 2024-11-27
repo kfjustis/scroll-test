@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b7p784ccey8y5"]
+[gd_scene load_steps=10 format=4 uid="uid://b7p784ccey8y5"]
 
 [ext_resource type="Texture2D" uid="uid://daofb7s1s367c" path="res://assets/ProjectUtumno_full.png" id="1_lwdbr"]
 [ext_resource type="Script" path="res://scripts/player_test.gd" id="2_qm0xn"]
@@ -66,7 +66,11 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_pe7g2")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8gw8n"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g65le"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dueeo"]
+size = Vector2(32, 32)
 
 [node name="Level_Test" type="Node2D"]
 
@@ -85,13 +89,39 @@ position = Vector2(16, 16)
 motion_mode = 1
 script = ExtResource("2_qm0xn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_8gw8n")
-
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 modulate = Color(1, 0, 0, 1)
+position = Vector2(-16, -16)
 scale = Vector2(32, 32)
 texture = ExtResource("3_045dq")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_g65le")
+
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(2, 2)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(141, 73)
+scale = Vector2(32, 32)
+texture = ExtResource("3_045dq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(157, 89)
+shape = SubResource("RectangleShape2D_dueeo")
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+position = Vector2(-32, 32)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D3"]
+position = Vector2(141, 73)
+scale = Vector2(32, 32)
+texture = ExtResource("3_045dq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+position = Vector2(157, 89)
+shape = SubResource("RectangleShape2D_dueeo")
